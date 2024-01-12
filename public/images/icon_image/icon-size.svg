@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32.098" height="32.098" viewBox="0 0 32.098 32.098">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.146" y1="0.146" x2="0.854" y2="0.854" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#00baff"/>
+      <stop offset="1" stop-color="#0068ef"/>
+    </linearGradient>
+  </defs>
+  <g id="Group_21604" data-name="Group 21604" transform="translate(9243 22316)">
+    <g id="Layer_6" transform="translate(-9243 -22316)">
+      <path id="Path_77071" data-name="Path 77071" d="M19.049,35.1A16.049,16.049,0,1,1,35.1,19.049,16.049,16.049,0,0,1,19.049,35.1Z" transform="translate(-3 -3)" fill="url(#linear-gradient)"/>
+    </g>
+    <g id="Search_results_for_Size_-_Flaticon-2" data-name="Search results for Size - Flaticon-2" transform="translate(-9245 -22318)">
+      <ellipse id="Ellipse_164" data-name="Ellipse 164" cx="2.665" cy="0.999" rx="2.665" ry="0.999" transform="translate(12.665 12.332)" fill="#fff"/>
+      <path id="Path_77095" data-name="Path 77095" d="M15.621,16.662v-.009c-.1,0-.193.009-.291.009,2.944,0,5.33-1.491,5.33-3.331S18.274,10,15.33,10,10,11.491,10,13.331v9.327h0c0,1.232,1.073,2.306,2.665,2.882V21.326H14V25.88a8.339,8.339,0,0,0,1.333.109V19.327h1.333v6.662h1.333V21.326h1.332v4.663h1.332V19.327h1.333v6.662h1.333V21.326h1.333v4.663h1.333V16.662Zm-.291-5.33c2.208,0,4,.894,4,2s-1.789,2-4,2-4-.9-4-2S13.122,11.333,15.33,11.333Z" fill="#fff"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32.098" height="32.098" viewBox="0 0 32.098 32.098">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.146" y1="0.146" x2="0.854" y2="0.854" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#00baff"/>
+      <stop offset="1" stop-color="#0068ef"/>
+    </linearGradient>
+  </defs>
+  <g id="Search_results_for_List_-_Flaticon-2" data-name="Search results for List - Flaticon-2" transform="translate(-3 -3)">
+    <g id="Layer_6" transform="translate(3 3)">
+      <path id="Path_77071" data-name="Path 77071" d="M19.049,35.1A16.049,16.049,0,1,1,35.1,19.049,16.049,16.049,0,0,1,19.049,35.1Z" transform="translate(-3 -3)" fill="url(#linear-gradient)"/>
+    </g>
+    <g id="Layer_8" transform="translate(11.108 11.108)">
+      <path id="Path_77072" data-name="Path 77072" d="M33.882,23H28a5.007,5.007,0,0,0-5,5v5.882a5.007,5.007,0,0,0,5,5h5.882a5.007,5.007,0,0,0,5-5V28A5.007,5.007,0,0,0,33.882,23ZM28.5,33.8l-1.471,1.471a.3.3,0,0,1-.418,0l-.588-.588a.3.3,0,1,1,.418-.418l.379.382,1.262-1.265a.3.3,0,0,1,.418.418Zm0-3.529-1.471,1.471a.3.3,0,0,1-.418,0l-.588-.588a.3.3,0,1,1,.418-.418l.379.382,1.262-1.265a.3.3,0,0,1,.418.418Zm0-3.529-1.471,1.471a.3.3,0,0,1-.418,0l-.588-.588a.3.3,0,1,1,.418-.418l.379.382,1.262-1.265a.3.3,0,0,1,.418.418Zm7.144,8.027H29.471a.294.294,0,0,1,0-.588h6.177a.294.294,0,1,1,0,.588Zm0-3.529H29.471a.294.294,0,1,1,0-.588h6.177a.294.294,0,1,1,0,.588Zm0-3.529H29.471a.294.294,0,0,1,0-.588h6.177a.294.294,0,1,1,0,.588Z" transform="translate(-23 -23)" fill="#fff"/>
+    </g>
+  </g>
+</svg>
