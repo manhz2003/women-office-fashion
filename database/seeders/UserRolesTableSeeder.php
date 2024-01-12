@@ -9,7 +9,6 @@ use Carbon\Carbon;
 
 class UserRolesTableSeeder extends Seeder
 {
-
     public function run(): void
     {
         $now = Carbon::now();
