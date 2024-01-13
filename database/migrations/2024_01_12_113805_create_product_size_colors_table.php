@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreign('id_product')->references('id')->on('products')->onDelete('cascade');
             $table->foreign('id_color')->references('id')->on('colors')->onDelete('cascade');
             $table->foreign('id_size')->references('id')->on('sizes')->onDelete('cascade');
+            $table->integer('stock')->unsigned()->default(0);
             $table->timestamps();
         });
     }
