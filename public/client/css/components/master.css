@@ -1,0 +1,8 @@
+* {
+    font-family: Neue Kabel, sans-serif;
+}
+
+body {
+    padding-top: 78px;
+    background-color: hsl(40, 33%, 98%);
+}

@@ -1,0 +1,141 @@
+.account-main {
+    background-image: url("/images/collection/backgroud.png");
+    background-repeat: no-repeat;
+    background-position: right;
+    background-color: rgb(246, 238, 225);
+}
+
+.form-account {
+    background-color: #fff;
+    display: inline-block;
+    margin: 38px 0 40px 118px;
+    border-radius: 0.625rem;
+    width: 400px;
+    padding: 2rem 2.16rem 0 2.16rem;
+}
+
+.form-account form {
+    width: 100%;
+}
+
+.form-heading {
+    font-weight: bold;
+    color: #252425;
+}
+
+.form-title p a {
+    color: #127daf;
+}
+
+.form-item {
+    margin: 28px 0;
+}
+
+.form-item label {
+    color: rgba(37, 36, 37, 0.8);
+}
+
+.form-item-flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.form-item input {
+    border: 1px solid hsla(0, 0%, 44%, 0.5);
+    border-radius: 62.4375rem;
+    font-size: 1rem;
+    line-height: 1.25rem;
+    padding: 0.8rem 1.25rem;
+    outline: none;
+    margin: 8px 0;
+    box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.password-item {
+    position: relative;
+    width: 100%;
+}
+
+.password-icon {
+    position: absolute;
+    right: 36px;
+    top: 42px;
+}
+
+.form-btn-login {
+    border-radius: 62.4375rem;
+    background-color: #252425;
+    color: #fff;
+    outline: none;
+    padding: 13px 42px;
+    margin-right: 34px;
+}
+
+.select-or {
+    position: relative;
+    border: 1px rgba(37, 36, 37, 0.2) solid;
+    margin: 50px 0 34px 0;
+}
+
+.form-item span {
+    position: absolute;
+    background-color: #fff;
+    color: #7b797b;
+    top: 50%;
+    right: 50%;
+    transform: translate(40%, -50%);
+    padding: 0 22px;
+}
+
+.form-margin {
+    margin: 0 20px;
+}
+
+.form-btn-login:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    transition: 0.4s ease;
+}
+
+.form-item .btn-google {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fbfbfb;
+    padding: 10px 58px;
+    border-radius: 0.25rem;
+}
+
+.form-item .btn-fb {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fbfbfb;
+    padding: 10px 38px;
+    border-radius: 0.25rem;
+}
+
+.btn-google img {
+    margin-right: 10px;
+}
+
+.btn-fb img {
+    margin-right: 10px;
+}
+
+.form-item a {
+    color: #127daf;
+    font-weight: 600;
+}
+
+a {
+    text-decoration: none;
+}
+
+.form-error {
+    color: red;
+    font-size: 12px;
+}

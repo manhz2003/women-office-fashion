@@ -1,0 +1,9 @@
+.product-sorting {
+    display: flex;
+    align-items: center;
+}
+
+.sorting-title {
+    margin-right: 16px;
+    color: rgba(37, 36, 37, 0.5);
+}

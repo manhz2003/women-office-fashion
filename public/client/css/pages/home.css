@@ -1,0 +1,119 @@
+.benefits {
+    display: flex;
+    justify-content: center;
+    margin-top: 18px;
+    margin-right: 19px;
+}
+
+.benefits img {
+    width: 74px;
+}
+
+.benefits-text {
+    margin-top: 20px;
+    font-size: 16px;
+    color: #918f92;
+}
+
+.benefits-title {
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: 549;
+}
+
+.mg-l-r {
+    margin: 0 20px;
+}
+
+.display-frame {
+    margin-right: 48px;
+    margin-top: 38px;
+    margin-bottom: 56px;
+}
+
+.display-frame ul {
+    display: flex;
+    justify-content: center;
+}
+
+.display-frame ul li a {
+    margin: 0 20px;
+}
+
+.display-frame ul li img {
+    width: 318px;
+    transition: transform 0.2s;
+}
+
+.display-frame li {
+    position: relative;
+    overflow: hidden;
+}
+
+.display-frame li::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: background 3s ease-in-out;
+    z-index: 1;
+}
+
+.display-frame li:hover img {
+    transform: scale(1.16);
+}
+
+.product-display {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 58px;
+}
+
+.product-img img {
+    border-radius: 62.4375rem;
+    width: 210px;
+}
+
+.product-list {
+    margin-right: 32px;
+}
+
+.product-list-item {
+    display: flex;
+    align-items: center;
+    margin: 18px 0;
+}
+
+.content ul {
+    margin-right: 90px;
+}
+
+.content ul li a {
+    text-decoration: none;
+    color: black;
+}
+
+.content button {
+    border: 1px solid #00aeef;
+    background-color: transparent;
+    border-radius: 20px;
+    margin-right: 20px;
+    padding: 10px 20px;
+}
+
+.content button a {
+    text-decoration: none;
+}
+
+.content button:hover {
+    font-weight: 500;
+    transform: scale(1.16);
+    transition: transform 0.5s;
+}
+
+.mt-24 {
+    margin-top: 24px;
+}
