@@ -4,7 +4,8 @@
 
 @section('main')
     <div class="product-app">
-        <div class="product-sort">
+        <div class="product-heading">
+            <div class="product-heading-title">Sản phẩm mới</div>
             @include('client.components.sorting')
         </div>
 

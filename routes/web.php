@@ -3,11 +3,11 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\ProductsController;
 use App\Http\Controllers\Admin\TestImagesController;
-use App\Http\Controllers\Client\HomeController;
 use App\Http\Controllers\Client\ProductsController as product;
 use App\Http\Controllers\Auth\LoginController;
 use Laravel\Socialite\Facades\Socialite;
 
+// admin
 Route::group(['prefix' => '/admin'], function () {
     Route::get('/testProduct', [ProductsController::class, 'index'])->name('admin.testProduct');
     Route::get('/testImages', [TestImagesController::class, 'index'])->name('admin.testImages');
@@ -39,22 +39,20 @@ Route::get('auth/google', function () {
 Route::get('auth/google/callback', [LogInController::class, 'handleGoogleCallback']);
 
 
-
-// Route::get('/slide-product', [slide::class, 'slideProduct'])->name('/');
-
-// trang home
-// Route::get('/', function () {
-//     return view('client/pages/home');
-// })->name('/');
+// product home
 Route::get('/', [product::class, 'ProductDressHome'])->name('/');
 
-// váy đầm
-Route::get('/product-dress', [product::class, 'ProductDressPage'])->name('product-dress');
+// fashion, product-new, product-sale, váy đầm
+Route::get('/product-dress', [product::class, 'productRandomDress'])->name('product-dress');
+Route::get('/product-fashion', [product::class, 'productRandomFashion'])->name('product-fashion');
+Route::get('/product-sale', [product::class, 'productRandomSale'])->name('product-sale');
+Route::get('/product-new', [product::class, 'productRandomNew'])->name('product-new');
 
-// fashion, product-new, product-sale
-Route::get('/product-fashion', [product::class, 'viewProductFashion'])->name('product-fashion');
-Route::get('/product-sale', [product::class, 'viewProductSale'])->name('product-sale');
-Route::get('/product-new', [product::class, 'viewProductNew'])->name('product-new');
+// sắp xếp tăng giảm dress, product sale, product fashion, product new
+Route::get('/product-dress/{sort?}', [product::class, 'sortProductDress'])->name('product-dress');
+Route::get('/product-sale/{sort?}', [product::class, 'sortProductSale'])->name('product-sale');
+Route::get('/product-fashion/{sort?}', [product::class, 'sortProductFashion'])->name('product-fashion');
+Route::get('/product-new/{sort?}', [product::class, 'sortProductNew'])->name('product-new');
 
 // trang bộ sưu tập
 Route::get('/collection', function () {

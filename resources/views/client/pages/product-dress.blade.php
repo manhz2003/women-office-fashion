@@ -3,5 +3,12 @@
 @section('title', 'Váy đầm')
 
 @section('main')
-    @include('client.components.product', ['products' => $products])
+    <div class="product-app">
+        <div class="product-heading">
+            <div class="product-heading-title">Sản phẩm váy đầm</div>
+            @include('client.components.sorting')
+        </div>
+
+        @include('client.components.product', ['products' => $products])
+    </div>
 @endsection

@@ -3,6 +3,11 @@
 @section('title', 'Thời trang')
 
 @section('main')
-    {{-- <div style="margin-top: 40px; margin-left: 60px;" class="product-title">THỜI TRANG NỮ</div> --}}
-    @include('client.components.product', ['products' => $products])
+    <div class="product-app">
+        <div class="product-heading">
+            <div class="product-heading-title">Sản phẩm thời trang</div>
+            @include('client.components.sorting')
+        </div>
+        @include('client.components.product', ['products' => $products])
+    </div>
 @endsection

@@ -6,7 +6,7 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    margin: 58px 0 28px 0;
+    margin: 30px 0 28px 0;
 }
 
 .slide-product-box {
@@ -119,8 +119,17 @@
     right: 14px;
 }
 
-.product-sort {
-    position: absolute;
-    right: 63px;
-    top: -28px;
+.product-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.product-heading-title {
+    font-size: 26px;
+    font-weight: bold;
+    margin-left: 65px;
+    color: #697173;
+    cursor: default;
 }

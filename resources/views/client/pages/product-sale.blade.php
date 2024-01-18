@@ -1,8 +1,12 @@
 @extends('client.layouts.master')
-
 @section('title', 'Sản phẩm giảm giá tết')
 
 @section('main')
-    <h1 class="product-title">SẢN PHẨM GIẢM GIÁ</h1>
-    @include('client.components.product', ['products' => $products])
+    <div class="product-app">
+        <div class="product-heading">
+            <div class="product-heading-title">Sản phẩm giảm giá</div>
+            @include('client.components.sorting')
+        </div>
+        @include('client.components.product', ['products' => $products])
+    </div>
 @endsection
