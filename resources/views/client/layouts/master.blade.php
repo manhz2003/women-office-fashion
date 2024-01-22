@@ -40,17 +40,44 @@
     {{-- css home pages --}}
     <link rel="stylesheet" href="{{ asset('client/css/pages/home.css') }}">
 
+    {{-- css sale off --}}
+    <link rel="stylesheet" href="{{ asset('client/css/pages/sale-off.css') }}">
+
     {{-- css collection pages --}}
     <link rel="stylesheet" href="{{ asset('client/css/pages/collection.css') }}">
 
     {{-- css đăng ký, đăng nhập pages --}}
-    <link rel="stylesheet" href="{{ asset('client/css/pages/account.css') }}">
+    <link rel="stylesheet" href="{{ asset('auth/css/account.css') }}">
+
+    {{-- css quên mật khẩu, đổi mật khẩu --}}
+    <link rel="stylesheet" href="{{ asset('auth/css/password.css') }}">
+
+    {{-- chat --}}
+    <link rel="stylesheet" href="{{ asset('client/css/components/chat.css') }}">
+
+    {{-- pages control --}}
+    <link rel="stylesheet" href="{{ asset('client/css/components/page-control.css') }}">
+
+    {{-- đặt hành thành công --}}
+    <link rel="stylesheet" href="{{ asset('client/css/pages/order-success.css') }}">
+
+    {{-- chi tiết sản phẩm --}}
+    <link rel="stylesheet" href="{{ asset('client/css/pages/product-detail.css') }}">
+
+    {{-- giỏ hàng --}}
+    <link rel="stylesheet" href="{{ asset('client/css/pages/cart.css') }}">
+
+    {{-- thanh toán --}}
+    <link rel="stylesheet" href="{{ asset('client/css/pages/payment.css') }}">
 </head>
 
 <body>
-    @include('client.components.header-nav')
-    @yield('main')
-    @include('client.components.footer')
+    <div class="root-app">
+        @include('client.components.header-nav')
+        @yield('main')
+        @include('client.components.scroll')
+        @include('client.components.footer')
+    </div>
 </body>
 
 </html>

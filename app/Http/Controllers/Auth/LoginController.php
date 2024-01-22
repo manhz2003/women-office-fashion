@@ -42,7 +42,7 @@ class LoginController extends Controller
                         return Redirect::to('/');
                     }
                 } else {
-                    dd('Incorrect password');
+                    dd('Mật khẩu không đúng');
                 }
             } else {
                 dd('The account does not exist in the system!');

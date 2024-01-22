@@ -2,6 +2,175 @@
     background-color: rgb(252, 251, 249);
 }
 
+.collection-content {
+    background-image: url("/images/collection/bg-2.png");
+    background-repeat: no-repeat;
+    padding-top: 60px;
+    margin-top: 20px;
+    background-position: 34% 16px;
+}
+
+.collection-title {
+    font-size: 52px;
+    font-weight: 600;
+}
+
+.collection-heading {
+    color: rgba(37, 36, 37, 0.8);
+    font-size: 36px;
+}
+
 .collection-banner img {
     width: 100%;
+}
+
+.collection-bg {
+    background-image: url("/images/collection/bg-1.png");
+    background-repeat: no-repeat;
+    background-position: 108% 143px;
+}
+
+.content-block {
+    text-align: center;
+}
+
+.collection-paragraph-box {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.collection-paragraph-box p {
+    margin: 0 46px;
+    width: 592px;
+    color: rgba(37, 36, 37, 0.75);
+}
+
+.collection-image {
+    margin-top: 40px;
+}
+
+.collection-image .collection-image-box {
+    display: flex;
+    justify-content: center;
+}
+
+.collection-image ul {
+    padding: 0;
+}
+
+.collection-li {
+    margin: 0 16px;
+}
+
+.collection-image li {
+    overflow: hidden;
+    position: relative;
+}
+
+.collection-image img {
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease-in-out;
+}
+
+.collection-image img:hover {
+    transform: scale(1.18);
+}
+
+.collection-image .img-1 img {
+    width: 627px;
+}
+
+.collection-image .img-size-1 img {
+    width: 293px;
+    height: 285px;
+}
+
+.collection-image .img-size-1-2 {
+    margin-top: 25px;
+}
+
+.collection-image .img-size-2 img {
+    width: 293px;
+}
+
+.collection-image .img-size-2-2 {
+    margin-top: 25px;
+}
+
+.collection-image .img-size-2-2 img {
+    height: 185px;
+}
+
+.collection-image .img-size-2-2-1 img {
+    height: 383px;
+}
+
+.collection-image-frame {
+    margin: 63px 0;
+}
+
+.collection-image-frame ul {
+    display: flex;
+    justify-content: center;
+    padding: 0;
+}
+
+.collection-image-frame ul li {
+    margin: 0 18px;
+    overflow: hidden;
+    position: relative;
+}
+
+.collection-image-frame ul li img {
+    display: block;
+    transition: transform 0.3s ease-in-out;
+}
+
+.collection-image-frame ul li img:hover {
+    transform: scale(1.18);
+}
+
+.collection-image-1 img {
+    width: 305px;
+    height: 400px;
+}
+
+.collection-image-2 img {
+    width: 260px;
+    height: 400px;
+}
+
+.collection-image-3 img {
+    width: 302px;
+    height: 400px;
+}
+
+.collection-image-4 img {
+    width: 300px;
+    height: 400px;
+}
+
+.collection-image-frame-list ul {
+    display: flex;
+    justify-content: center;
+    padding: 0;
+}
+
+.collection-image-frame-list ul li {
+    margin: 0 16px;
+    overflow: hidden;
+    position: relative;
+}
+
+.collection-image-frame-list ul li img {
+    width: 622px;
+    display: block;
+    transition: transform 0.3s ease-in-out;
+}
+
+.collection-image-frame-list ul li img:hover {
+    transform: scale(1.18);
 }

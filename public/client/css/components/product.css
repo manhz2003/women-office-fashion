@@ -69,7 +69,7 @@
 }
 
 .icon-color-border {
-    border: 1px solid #00aeef;
+    border: 1px solid #00aeef !important;
 }
 
 .icon-color-img:hover {

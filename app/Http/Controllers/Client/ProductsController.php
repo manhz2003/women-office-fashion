@@ -8,19 +8,61 @@ use Illuminate\Support\Facades\DB;
 
 class ProductsController extends Controller
 {
-    // lấy ngẫu nhiên 10 sản phẩm từ bảng product cho trang chủ
-    public function ProductDressHome()
+    // lấy ngẫu nhiên sản phẩm từ bảng product
+    public function getProductRandom($limit)
     {
         $products = DB::table('products')
             ->inRandomOrder()
             ->distinct()
             ->select('id', 'name', 'old_price', 'new_price', 'thumbnail')
-            ->limit(10)
+            ->limit($limit)
             ->get();
+        return $products;
+    }
+
+    // trả 10 product random cho trang chủ
+    public function productRandomHome()
+    {
+        $products = $this->getProductRandom(10);
         return view('client.pages.home', compact('products'));
     }
 
-    // lấy ngẫu nhiên 10 váy đầm từ bảng product cho trang váy đầm
+    // trả 10 product random cho trang sale-off
+    public function productRandomsaleOff()
+    {
+        $products = $this->getProductRandom(10);
+        return view('client.pages.sale-off', ['products' => $products]);
+    }
+
+    // trả 15 product random cho trang sản phẩm mới
+    public function productRandomNew()
+    {
+        $products = $this->getProductRandom(15);
+        return view('client.pages.product-new', ['products' => $products]);
+    }
+
+    // trả 15 product random cho trang sản phẩm giảm giá
+    public function productRandomSale()
+    {
+        $products = $this->getProductRandom(15);
+        return view('client.pages.product-sale', ['products' => $products]);
+    }
+
+    // trả 5 product random cho trang chi tiết sản phẩm
+    public function productRandomDetail()
+    {
+        $products = $this->getProductRandom(5);
+        return view('client.pages.product-detail', ['products' => $products]);
+    }
+
+    // trả 5 product random cho trang giỏ hàng
+    public function productRandomCart()
+    {
+        $products = $this->getProductRandom(5);
+        return view('client.pages.cart', ['products' => $products]);
+    }
+
+    // lấy ngẫu nhiên 15 váy đầm từ bảng product cho trang váy đầm
     public function productRandomDress()
     {
         $products = DB::table('products')
@@ -48,7 +90,7 @@ class ProductsController extends Controller
         return $sortedProducts;
     }
 
-    // lấy ra 15 váy đầm đã sắp xếp
+    // trả 15 váy đầm đã sắp xếp
     public function sortProductDress(Request $request, $sort = 'desc')
     {
         $products = $this->getSortedProductDress($sort);
@@ -56,7 +98,7 @@ class ProductsController extends Controller
         return view('client.pages.product-dress', compact('products', 'sort'));
     }
 
-    // lấy 15 sản phẩm fashion ngẫu nhiên từ bảng product
+    // trả 15 sản phẩm fashion ngẫu nhiên từ bảng product
     public function productRandomFashion()
     {
         $products = DB::table('products')
@@ -92,42 +134,15 @@ class ProductsController extends Controller
         return view('client.pages.product-dress', compact('products', 'sort'));
     }
 
-
-    // lấy ngẫu nhiên 15 sản phẩm từ bảng product
-    public function getProductRandom()
-    {
-        $products = DB::table('products')
-            ->inRandomOrder()
-            ->distinct()
-            ->select('id', 'name', 'old_price', 'new_price', 'thumbnail')
-            ->limit(15)
-            ->get();
-        return $products;
-    }
-
-    // lấy ngẫu nhiên 15 sản phẩm cho trang sản phẩm mới
-    public function productRandomNew()
-    {
-        $products = $this->getProductRandom();
-        return view('client.pages.product-new', ['products' => $products]);
-    }
-
-    // lấy ngẫu nhiên 15 sản phẩm cho trang sản phẩm giảm giá
-    public function productRandomSale()
-    {
-        $products = $this->getProductRandom();
-        return view('client.pages.product-sale', ['products' => $products]);
-    }
-
     // sắp xếp 15 sản phẩm ngẫu nhiên
-    private function getSortedProductRandom($sort)
+    private function getSortedProductRandom($sort, $take)
     {
         $orderBy = ($sort === 'asc') ? 'new_price' : 'new_price desc';
 
         $products = DB::table('products')
             ->orderByRaw($orderBy)
             ->inRandomOrder()
-            ->take(15)
+            ->take($take)
             ->get(['products.id', 'products.name', 'products.old_price', 'products.new_price', 'products.thumbnail']);
 
         return $products;
@@ -136,7 +151,7 @@ class ProductsController extends Controller
     // lấy 15 sản phẩm ngẫu nhiên đã sắp xếp cho trang sản phẩm mới
     public function sortProductNew(Request $request, $sort = 'desc')
     {
-        $products = $this->getSortedProductRandom($sort);
+        $products = $this->getSortedProductRandom($sort, 15);
 
         return view('client.pages.product-new', compact('products', 'sort'));
     }
@@ -144,7 +159,7 @@ class ProductsController extends Controller
     // lấy 15 sản phẩm ngẫu nhiên đã sắp xếp cho trang sản phẩm giảm giá
     public function sortProductSale(Request $request, $sort = 'desc')
     {
-        $products = $this->getSortedProductRandom($sort);
+        $products = $this->getSortedProductRandom($sort, 15);
 
         return view('client.pages.product-sale', compact('products', 'sort'));
     }

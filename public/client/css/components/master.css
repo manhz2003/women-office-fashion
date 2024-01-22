@@ -5,4 +5,5 @@
 body {
     padding-top: 78px;
     background-color: hsl(40, 33%, 98%);
+    position: relative;
 }

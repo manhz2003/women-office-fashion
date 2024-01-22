@@ -41,24 +41,17 @@
 }
 
 .display-frame ul li img {
+    display: block;
     width: 318px;
     transition: transform 0.2s;
+    height: auto;
+    transition: transform 0.3s ease-in-out;
 }
 
 .display-frame li {
     position: relative;
     overflow: hidden;
-}
-
-.display-frame li::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    transition: background 3s ease-in-out;
-    z-index: 1;
+    margin: 0 18px;
 }
 
 .display-frame li:hover img {

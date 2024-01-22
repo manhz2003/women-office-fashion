@@ -38,5 +38,6 @@
             </div>
         </div>
     @endforeach
+    @include('client.components.page-control')
     <script src="{{ asset('client/js/product.js') }}"></script>
 </div>

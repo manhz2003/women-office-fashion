@@ -1,15 +1,25 @@
-// ẩn và hiện thị password
 document.addEventListener("DOMContentLoaded", function () {
     var passwordInput = document.getElementById("password-input");
-    var passwordIcon = document.querySelector(".password-icon");
-    passwordIcon.addEventListener("click", function () {
-        if (passwordInput.type === "password") {
-            passwordInput.type = "text";
-            passwordIcon.src = "/images/icon_image/icon-hide-password2.svg";
-        } else {
-            passwordInput.type = "password";
-            passwordIcon.src = "/images/icon_image/icon-view-password.svg";
-        }
+
+    // Chọn cả hai ảnh với class là "password-icon-r"
+    var passwordIcons = document.querySelectorAll(".password-icon");
+
+    // Lặp qua mỗi ảnh và thêm sự kiện click
+    passwordIcons.forEach(function (passwordIcon) {
+        passwordIcon.addEventListener("click", function () {
+            // Toggle giữa hiển thị và ẩn password
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                passwordIcons.forEach(function (icon) {
+                    icon.src = "/images/icon_image/icon-hide-password2.svg";
+                });
+            } else {
+                passwordInput.type = "password";
+                passwordIcons.forEach(function (icon) {
+                    icon.src = "/images/icon_image/icon-view-password.svg";
+                });
+            }
+        });
     });
 });
 

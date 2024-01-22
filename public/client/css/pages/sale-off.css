@@ -1,0 +1,71 @@
+.sale-voucher-code {
+    display: flex;
+    justify-content: center;
+    cursor: default;
+    margin-top: 40px;
+}
+
+.sale-banner img {
+    width: 100%;
+}
+
+.sale-voucher-code img {
+    width: 438px;
+    margin: 0 20px;
+    height: 150px;
+}
+
+.sale-voucher-code ul li {
+    margin: 10px 0;
+    color: #fff;
+}
+
+.sale-voucher-code ul li:nth-last-child(2) {
+    font-size: 13px;
+}
+
+.sale-voucher-code ul li:last-child {
+    margin-top: 23px;
+}
+
+.voucher-code {
+    position: relative;
+}
+
+.voucher-code-content {
+    position: absolute;
+    top: 8px;
+    right: 128px;
+}
+
+.voucher-coppy {
+    cursor: pointer;
+    background-color: #fff;
+    color: #000;
+    border-radius: 62.4375rem;
+    transition: 0.5s ease;
+    font-weight: bold;
+    padding: 10px 24px;
+    display: inline-block;
+}
+
+.voucher-coppy:hover {
+    transform: scale(1.08);
+}
+
+.sale-voucher-hot {
+    display: flex;
+    justify-content: center;
+    margin-top: 18px;
+    margin-bottom: 36px;
+}
+
+.sale-voucher-hot img {
+    width: 410px;
+    margin: 0 15px;
+    transition: 0.5s ease;
+}
+
+.sale-voucher-hot img:hover {
+    transform: scale(1.06);
+}

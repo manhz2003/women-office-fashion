@@ -4,7 +4,7 @@
 
 @section('main')
     <div class="account-main">
-        <div class="form-account" onsubmit="return validateForm()">
+        <div class="form-account">
             <form action="/login" onsubmit="return validateForm()" method="POST">
                 @csrf
                 <h1 class="form-heading"><b>Đăng nhập</b></h1>
@@ -28,7 +28,7 @@
                 </div>
                 <div class="form-item form-item-flex">
                     <button class="form-btn-login" type="submit"><b>ĐĂNG NHẬP</b></button>
-                    <a href="">Quên mật khẩu</a>
+                    <a href="{{ route('auth.passwords.forgot') }}">Quên mật khẩu</a>
                 </div>
 
                 <div class="form-item select-or">
@@ -53,6 +53,6 @@
             </form>
 
         </div>
-        <script src="{{ asset('client/js/login.js') }}"></script>
+        <script src="{{ asset('auth/js/login.js') }}"></script>
     </div>
 @endsection

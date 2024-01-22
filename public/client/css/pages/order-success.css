@@ -1,0 +1,97 @@
+.order-app {
+    display: flex;
+    justify-content: center;
+    border-radius: 14px;
+    margin: 80px 110px;
+    background-color: #fff;
+}
+
+.order-content {
+    position: relative;
+    width: 600px;
+    padding: 58px 55px 60px 60px;
+}
+
+.order-content .title {
+    color: rgba(37, 36, 37, 0.7);
+    margin-top: 28px;
+}
+
+.order-content .info {
+    margin-top: 70px;
+    color: #252425;
+    font-weight: 550;
+}
+
+.order-content h1 {
+    color: #e30e48;
+}
+
+.order-content .info-content {
+    display: flex;
+    padding: 0;
+}
+
+.order-content .info-content li ul {
+    padding: 3px;
+}
+
+.order-content .info-content li ul li {
+    margin: 28px 0;
+}
+
+.info-content-title li {
+    color: rgba(37, 36, 37, 0.7);
+}
+
+.info-content-order {
+    margin-left: 98px;
+    position: relative;
+}
+
+.li-child {
+    padding-bottom: 30px;
+}
+
+.info-content-order li {
+    font-weight: 600;
+    color: rgba(25, 24, 25, 0.7);
+}
+
+.order-img {
+    display: block;
+}
+
+.order-img img {
+    width: 630px;
+    height: 100%;
+    border-radius: 14px;
+}
+
+.order-separation {
+    margin-top: 30px;
+    border: 0.1px solid rgba(130, 128, 130, 0.1);
+}
+
+.order-separation-position {
+    border: 0.1px solid rgba(130, 128, 130, 0.1);
+    position: absolute;
+    bottom: 33%;
+    width: 82.5%;
+}
+
+.order-content a button {
+    width: 100%;
+    color: #fff;
+    background-color: #252425;
+    cursor: pointer;
+    border-radius: 162.4375rem;
+    padding: 12px 0;
+    outline: none;
+    margin-top: 16px;
+}
+
+.order-content a button:hover {
+    transform: scale(1.05);
+    transition: 0.4s ease;
+}

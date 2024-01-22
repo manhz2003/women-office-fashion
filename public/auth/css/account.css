@@ -139,3 +139,26 @@ a {
     color: red;
     font-size: 12px;
 }
+
+.form-input-name {
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-item-name {
+    margin: 0 10px;
+}
+
+.form-sex {
+    display: flex;
+}
+
+.form-yob {
+    margin-top: 21px;
+}
+
+.password-icon-r {
+    position: absolute;
+    right: 36px;
+    top: 24px;
+}

@@ -1,7 +1,32 @@
 @extends('client.layouts.master')
 
 @section('main')
-    <h1>
-        đặt lại mật khẩu
-    </h1>
+    <div class="reset-app">
+        <div class="password-form-forgot">
+            <form action="{{ route('reset-password') }}" method="post">
+                @csrf
+                <h1>
+                    Thay đổi mật khẩu
+                </h1>
+                <p>
+                    Vui lòng nhập email và mật khẩu trước đó của bạn để thay đổi mật khẩu mới
+                </p>
+                <div class="password-email form-forgot-input">
+                    <input placeholder="Email" type="email" name="email_or_phone" required>
+                </div>
+                <div class="password-email form-forgot-input">
+                    <input placeholder="Mật khẩu cũ" type="password" name="password" required>
+                </div>
+                <div class="password-email form-forgot-input">
+                    <input placeholder="Mật khẩu mới" type="password" name="new_password" required>
+                </div>
+                <div class="password-email form-forgot-input">
+                    <input placeholder="Xác nhận mật khẩu mới" type="password" name="confirm_new_password" required>
+                </div>
+                <div class="password-btn form-forgot-input">
+                    <button type="submit">Gửi</button>
+                </div>
+            </form>
+        </div>
+    </div>
 @endsection
