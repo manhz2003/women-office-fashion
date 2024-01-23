@@ -6,14 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class CartController extends Controller
+class HomeController extends Controller
 {
-    public function viewCart()
-    {
-        $products = $this->getProductRandom(5);
-        return view('client.pages.cart', ['products' => $products]);
-    }
-
     public function getProductRandom($limit)
     {
         $products = DB::table('products')
@@ -23,5 +17,11 @@ class CartController extends Controller
             ->limit($limit)
             ->get();
         return $products;
+    }
+
+    public function viewHome()
+    {
+        $products = $this->getProductRandom(10);
+        return view('client.pages.home', compact('products'));
     }
 }

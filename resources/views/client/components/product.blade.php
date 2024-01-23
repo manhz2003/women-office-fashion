@@ -2,7 +2,8 @@
     @foreach ($products as $product)
         <div class="slide-product-box">
             <div class="slide-thumnail">
-                <a href="https://gumac.vn/"><img src="{{ asset($product->thumbnail) }}" alt=""></a>
+                <a href="{{ route('product-detail', ['id' => $product->id]) }}"><img
+                        src="{{ asset($product->thumbnail) }}" alt=""></a>
             </div>
             <div class="slide-content">
                 <ul>
@@ -18,7 +19,8 @@
                         </div>
                     </li>
                     <li>
-                        <a href="" class="product-name">{{ $product->name }}</a>
+                        <a href="{{ route('product-detail', ['id' => $product->id]) }}"
+                            class="product-name">{{ $product->name }}</a>
                     </li>
                     <li class="product-id">
                         {{ $product->id }}

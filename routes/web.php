@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\ProductsController;
 use App\Http\Controllers\Admin\TestImagesController;
-use App\Http\Controllers\Client\ProductsController as product;
+use App\Http\Controllers\Client\ProductDetailController;
 use App\Http\Controllers\Auth\LoginController;
 use Laravel\Socialite\Facades\Socialite;
 use App\Http\Controllers\Auth\ForgotPasswordController;
@@ -11,6 +11,15 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ActiveAccountController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Client\SaleOffController;
+use App\Http\Controllers\Client\HomeController;
+use App\Http\Controllers\Client\ProductNewController;
+use App\Http\Controllers\Client\ProductDressController;
+use App\Http\Controllers\Client\ProductFashionController;
+use App\Http\Controllers\Client\ProductSaleController;
+use App\Http\Controllers\Client\CartController;
+use App\Http\Controllers\Client\CollectionController;
+use App\Http\Controllers\Client\OrderController;
+use App\Http\Controllers\Client\PaymentController;
 
 // admin
 Route::group(['prefix' => '/admin'], function () {
@@ -50,44 +59,38 @@ Route::get('/forgot', [ForgotPasswordController::class, 'viewForgotPassword'])->
 Route::post('/forgot', [ForgotPasswordController::class, 'forgotPassword']);
 
 // product home
-Route::get('/', [product::class, 'productRandomHome'])->name('/');
+Route::get('/', [HomeController::class, 'viewHome'])->name('/');
 
-// fashion, product-new, product-sale, váy đầm, sale-off, product-detail, cart
-Route::get('/product-dress', [product::class, 'productRandomDress'])->name('product-dress');
-Route::get('/product-fashion', [product::class, 'productRandomFashion'])->name('product-fashion');
-Route::get('/product-sale', [product::class, 'productRandomSale'])->name('product-sale');
-Route::get('/product-new', [product::class, 'productRandomNew'])->name('product-new');
-Route::get('/product-detail', [product::class, 'productRandomDetail'])->name('product-detail');
-Route::get('/cart', [product::class, 'productRandomCart'])->name('cart');
+// product-sale
+Route::get('/product-sale', [ProductSaleController::class, 'viewProductSale'])->name('product-sale');
+Route::get('/product-sale/{sort?}', [ProductSaleController::class, 'sortProductSale'])->name('product-sale');
 
-// product
-Route::get('/sale-off', [product::class, 'productRandomsaleOff'])->name('sale-off');
+// product-new
+Route::get('/product-new', [ProductNewController::class, 'viewProductNew'])->name('product-new');
+Route::get('/product-new/{sort?}', [ProductNewController::class, 'sortProductNew'])->name('product-new');
 
-// sale
-// Route::get('/sale-off/c', [SaleOffController::class, 'productSaleOffCode'])->name('sale-code');
+// product-dress
+Route::get('/product-dress', [ProductDressController::class, 'viewProductDress'])->name('product-dress');
+Route::get('/product-dress/{sort?}', [ProductDressController::class, 'sortProductDress'])->name('product-dress');
 
-// sắp xếp tăng giảm dress, product sale, product fashion, product new
-Route::get('/product-dress/{sort?}', [product::class, 'sortProductDress'])->name('product-dress');
-Route::get('/product-sale/{sort?}', [product::class, 'sortProductSale'])->name('product-sale');
-Route::get('/product-fashion/{sort?}', [product::class, 'sortProductFashion'])->name('product-fashion');
-Route::get('/product-new/{sort?}', [product::class, 'sortProductNew'])->name('product-new');
+// product-fashion
+Route::get('/product-fashion', [ProductFashionController::class, 'viewProductFashion'])->name('product-fashion');
+Route::get('/product-fashion/{sort?}', [ProductFashionController::class, 'sortProductFashion'])->name('product-fashion');
 
-// trang bộ sưu tập
-Route::get('/collection', function () {
-    return view('client/pages/collection');
-})->name('collection');
+// product-detail
+Route::get('/product-detail/{id}', [ProductDetailController::class, 'viewProductDetail'])->name('product-detail');
 
-// giỏ hàng
-// Route::get('/cart', function () {
-//     return view('client/pages/cart');
-// })->name('cart');
+// sale off
+Route::get('/sale-off', [SaleOffController::class, 'viewSaleOff'])->name('sale-off');
 
-// đặt hàng thành công
-Route::get('/order-success', function () {
-    return view('client/pages/order-success');
-})->name('order-success');
+// cart
+Route::get('/cart', [CartController::class, 'viewCart'])->name('cart');
 
-// thanh toán
-Route::get('/payment', function () {
-    return view('client/pages/payment');
-})->name('payment');
+// collection
+Route::get('/collection', [CollectionController::class, 'viewCollection'])->name('collection');
+
+// order-success
+Route::get('/order-success', [OrderController::class, 'viewOrderSuccess'])->name('order-success');
+
+// payment
+Route::get('/payment', [PaymentController::class, 'viewPayment'])->name('payment');

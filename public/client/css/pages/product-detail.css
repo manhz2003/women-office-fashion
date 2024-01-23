@@ -20,12 +20,21 @@
     margin-bottom: 16px;
 }
 
-.slide .row .mt-16 {
-    margin: 20px 0;
+.column img {
+    filter: brightness(90%);
+}
+
+.column img:hover {
+    cursor: pointer;
+    filter: brightness(100%);
+}
+
+.row .column:not(:first-child) {
+    margin-top: 10px;
 }
 
 .slide .row .column img {
-    width: 72px;
+    width: 70px;
 }
 
 .mySlides {

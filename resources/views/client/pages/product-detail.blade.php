@@ -8,63 +8,28 @@
             <div class="slide">
                 <div class="slide-list">
                     <div class="row">
-                        <div class="column">
-                            <img class="demo cursor" src="{{ asset('images/product/dresses/dam-a-bau-canh-sen-01.jpg') }}"
-                                onclick="currentSlide(1)" alt="">
-                        </div>
-                        <div class="column mt-16">
-                            <img class="demo cursor" src="{{ asset('images/product/dresses/dam-a-bau-canh-sen-02.jpg') }}"
-                                onclick="currentSlide(2)" alt="">
-                        </div>
-                        <div class="column mt-16">
-                            <img class="demo cursor" src="{{ asset('images/product/dresses/dam-a-bau-canh-sen-03.jpg') }}"
-                                onclick="currentSlide(3)" alt="">
-                        </div>
-                        <div class="column mt-16">
-                            <img class="demo cursor" src="{{ asset('images/product/dresses/dam-a-bau-canh-sen-04.jpg') }}"
-                                onclick="currentSlide(4)" alt="">
-                        </div>
-                        <div class="column mt-16">
-                            <img class="demo cursor" src="{{ asset('images/product/dresses/dam-a-bau-canh-sen-05.jpg') }}"
-                                onclick="currentSlide(5)" alt="">
-                        </div>
-                        <div class="column mt-16">
-                            <img class="demo cursor" src="{{ asset('images/product/dresses/dam-a-bau-canh-sen-06.jpg') }}"
-                                onclick="currentSlide(6)" alt="">
-                        </div>
+                        @for ($index = 0; $index < min(7, count($productImages)); $index++)
+                            <div class="column mt-16">
+                                <img class="" src="{{ asset($productImages[$index]->path) }}"
+                                    onclick="currentSlide({{ $index + 1 }})" alt="">
+                            </div>
+                        @endfor
                     </div>
                 </div>
                 <div class="gallery">
-                    <div class="mySlides">
-                        <img src="{{ asset('images/product/dresses/dam-a-bau-canh-sen-01.jpg') }}">
-                    </div>
-
-                    <div class="mySlides">
-                        <img src="{{ asset('images/product/dresses/dam-a-bau-canh-sen-02.jpg') }}">
-                    </div>
-
-                    <div class="mySlides">
-                        <img src="{{ asset('images/product/dresses/dam-a-bau-canh-sen-03.jpg') }}">
-                    </div>
-
-                    <div class="mySlides">
-                        <img src="{{ asset('images/product/dresses/dam-a-bau-canh-sen-04.jpg') }}">
-                    </div>
-
-                    <div class="mySlides">
-                        <img src="{{ asset('images/product/dresses/dam-a-bau-canh-sen-05.jpg') }}">
-                    </div>
-
-                    <div class="mySlides">
-                        <img src="{{ asset('images/product/dresses/dam-a-bau-canh-sen-06.jpg') }}">
-                    </div>
+                    @foreach ($productImages as $index => $image)
+                        <div class="mySlides">
+                            <img src="{{ asset($image->path) }}">
+                        </div>
+                    @endforeach
                 </div>
             </div>
 
+
             <div class="product-detail-content">
-                <div class="name-heading"><b>Áo kiểu lệch vai</b></div>
+                <div class="name-heading"><b>{{ $product->name }}</b></div>
                 <div class="product-info-code">
-                    <div class="product-detail-id">ATD12076</div>
+                    <div class="product-detail-id">{{ $product->id }}</div>
                     <div class="product-detail-list-icon">
                         <ul>
                             <li><img src="{{ asset('images/icon_image/ic-star-orange.svg') }}" alt=""></li>
@@ -79,8 +44,8 @@
                 </div>
 
                 <div class="product-detail-price">
-                    <div class="price-new">199.000 đ</div>
-                    <div class="price-old">275.000 đ</div>
+                    <div class="price-new">{{ number_format($product->new_price, 3) }} đ</div>
+                    <div class="price-old">{{ number_format($product->old_price, 3) }} đ</div>
                 </div>
                 <div class="product-detail-size">
                     <div class="size-text">
@@ -167,6 +132,7 @@
                 </div>
             </div>
         </div>
+
         <div class="product-detail-guid">
             <div class="detail-guid-box">
                 <div class="detail-outstanding">

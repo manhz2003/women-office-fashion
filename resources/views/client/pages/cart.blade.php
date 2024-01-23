@@ -188,7 +188,7 @@
             <div class="cart-order-container">
                 <form action="">
                     <div class="cart-order-title">
-                        Thông tin đơn hàng
+                        <b>Thông tin đơn hàng</b>
                     </div>
                     <div class="cart-order-content">
                         <ul>
@@ -213,7 +213,7 @@
                                 <div class="btn-sale">ÁP DỤNG</div>
                             </li>
                             <li class="error">
-                                <span>Vui lòng nhập mã giảm giá!</span>
+                                Vui lòng nhập mã giảm giá!
                             </li>
                             <li class="cart-order-content-separation"></li>
                             <li class="cart-order-content-flex">

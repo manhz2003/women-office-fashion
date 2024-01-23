@@ -25,7 +25,7 @@
 }
 
 .product-list-unit-price .price-new {
-    font-size: 22px;
+    font-size: 20px;
 }
 
 .product-list-unit-price .price-old {
@@ -47,8 +47,8 @@
 .product-list-total {
     width: 150px;
     text-align: end;
-    margin-left: 64px;
-    font-size: 22px;
+    margin-left: 86px;
+    font-size: 20px;
 }
 
 .product-list-quantity .detail-quantity {
@@ -187,7 +187,7 @@
 }
 
 .product-list-heading-total {
-    width: 225px;
+    width: 248px;
     text-align: end;
 }
 
@@ -288,13 +288,8 @@
     margin-top: 30px !important;
 }
 
-.cart-order-content ul .error span {
-    color: red;
-    padding-top: 18px;
-    padding-bottom: 26px;
-}
-
 .cart-order-content ul .error {
+    color: red;
     margin-top: 20px;
     margin-bottom: 30px;
 }
