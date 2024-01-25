@@ -11,6 +11,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ActiveAccountController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Client\SaleOffController;
+use App\Http\Controllers\Client\OrderController;
 
 // admin
 Route::group(['prefix' => '/admin'], function () {
@@ -83,9 +84,10 @@ Route::get('/collection', function () {
 // })->name('cart');
 
 // đặt hàng thành công
-Route::get('/order-success', function () {
-    return view('client/pages/order-success');
-})->name('order-success');
+Route::get('/order-success', [OrderController::class, 'view'])->name('view-payment');
+// Route::get('/order-success', function () {
+//     return view('client/pages/order-success');
+// })->name('order-success');
 
 // thanh toán
 Route::get('/payment', function () {

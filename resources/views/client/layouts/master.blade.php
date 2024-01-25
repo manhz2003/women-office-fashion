@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> {{-- ngrok load css --}}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="{{ asset('images/icon_image/icon-head.png') }}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
