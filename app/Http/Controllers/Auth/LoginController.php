@@ -99,7 +99,7 @@ class LoginController extends Controller
             ]);
             Auth::loginUsingId($userId);
             return redirect()->route('/')->with('ThongBao', 'Đăng nhập thành công!');
-        } else {
+        }else {
             // Lấy ID của người dùng đã tồn tại
             $userId = $existingUser->id;
             Auth::loginUsingId($userId);

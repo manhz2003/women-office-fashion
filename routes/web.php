@@ -93,3 +93,17 @@ Route::get('/order-success', [OrderController::class, 'view'])->name('view-payme
 Route::get('/payment', function () {
     return view('client/pages/payment');
 })->name('payment');
+
+//use App\Http\Controllers\Client\ProductsController;
+use App\Http\Controllers\TestController;
+
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+// trang test hiển thị product
+Route::get('/admin/testProduct', [ProductsController::class, 'index']);
+
+// trang test trung
+Route::get('admin/trung', [TestController::class, 'index']);
+
