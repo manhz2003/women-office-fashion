@@ -85,6 +85,8 @@ Route::get('/sale-off', [SaleOffController::class, 'viewSaleOff'])->name('sale-o
 
 // cart
 Route::get('/cart', [CartController::class, 'viewCart'])->name('cart');
+Route::post('/cart', [CartController::class, 'processCart'])->name('cart.process');
+Route::get('/cart/{cartItemId}', [CartController::class, 'deleteCartItem'])->name('cart.delete');
 
 // collection
 Route::get('/collection', [CollectionController::class, 'viewCollection'])->name('collection');
@@ -94,3 +96,4 @@ Route::get('/order-success', [OrderController::class, 'viewOrderSuccess'])->name
 
 // payment
 Route::get('/payment', [PaymentController::class, 'viewPayment'])->name('payment');
+Route::post('/insert-payment', [PaymentController::class, 'insertPayment'])->name('insert-payment');

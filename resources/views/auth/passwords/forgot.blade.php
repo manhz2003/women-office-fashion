@@ -5,7 +5,7 @@
 @section('main')
     <div class="password-app">
         <div class="password-form">
-            <form action="{{ url('/forgot') }}" method="post">
+            <form action="{{ url('/forgot') }}" method="post" onsubmit="showSuccessAlert()">
                 @csrf
                 <h1>
                     Quên mật khẩu?
@@ -21,6 +21,7 @@
                 </div>
             </form>
         </div>
+        <script src="{{ asset('auth/js/forgot.js') }}"></script>
     </div>
 
 @endsection

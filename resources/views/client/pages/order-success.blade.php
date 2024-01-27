@@ -29,14 +29,16 @@
                     </ul>
                 </li>
                 <li>
-                    <ul class="info-content-order">
-                        <li>GM00030791</li>
-                        <li>123</li>
-                        <li>0981231231</li>
-                        <li class="li-child">hoàng long, tản lĩnh, huyện Ba Vì, Hà Nội </li>
-                        <li>357.500 đ</li>
-                        <li>COD (Thanh toán khi nhận hàng)</li>
-                    </ul>
+                    @if (!empty($orderInfo))
+                        <ul class="info-content-order">
+                            <li>{{ $orderInfo['id'] }}</li>
+                            <li> {{ $orderInfo['fullname'] }}</li>
+                            <li>{{ $orderInfo['sdt'] }}</li>
+                            <li class="li-child">Hà Nội, Ba Đình, Phúc xá, {{ $orderInfo['user_address'] }}</li>
+                            <li>{{ str_replace(',', '.', number_format($orderInfo['total'], 3)) }} đ</li>
+                            <li>COD (Thanh toán khi nhận hàng)</li>
+                        </ul>
+                    @endif
                 </li>
 
             </ul>

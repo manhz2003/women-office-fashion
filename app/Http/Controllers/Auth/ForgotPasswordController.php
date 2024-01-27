@@ -33,7 +33,7 @@ class ForgotPasswordController extends Controller
                             $message->to($email);
                         }
                     );
-                    return redirect()->back()->with(dd('success', 'Mật khẩu của bạn đã được gửi đến địa chỉ email.'));
+                    return redirect()->route('auth.passwords.forgot')->with('success', 'Mật khẩu của bạn đã được gửi đến địa chỉ email.');
                 } catch (Exception $e) {
                     return redirect()->back()->with(dd('error', 'Có lỗi xảy ra khi gửi email. Vui lòng thử lại sau.'));
                 }

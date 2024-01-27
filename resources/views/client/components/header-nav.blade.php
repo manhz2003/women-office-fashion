@@ -32,9 +32,7 @@
                     alt=""></a>
         </div>
         <div class="action-icon" style="position: relative;">
-            <div class="cart-badge">
-                <p>10</p>
-            </div>
+
             <a href="{{ route('cart') }}"><img src="{{ asset('images/icon_image/icon-cart.svg') }}"
                     alt=""></a>
         </div>

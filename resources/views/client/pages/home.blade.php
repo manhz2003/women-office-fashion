@@ -90,7 +90,7 @@
                             <Li class="mt-24"><a style="color: rgba(37,36,37,.5); font-size: 20px" href="">ÁO
                                     DÀI</a>
                             </Li>
-                            <Li class="mt-24" style="font-size: 28px">337.500 đ đ</Li>
+                            <Li class="mt-24" style="font-size: 28px">337.500 đ</Li>
                             <Li class="mt-24" style="display:flex;"><button><a style="color: #00aeef;" href="">Mua
                                         ngay</a></button> <img src="{{ asset('images/icon_image/icon-heart.svg') }}"
                                     alt=""></Li>

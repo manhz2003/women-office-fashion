@@ -10,26 +10,30 @@
         </div>
 
         <div class="payment-app-content">
-            <form action="">
+            <form action="{{ route('insert-payment') }}" method="POST">
+                @csrf
                 <div class="payment-app-address">
                     <div class="payment-form-heading">
                         Địa chỉ giao hàng
                     </div>
-
+                    <input type="hidden" name="total_pay" value="{{ number_format($showCart['totalPayment'], 3, '.', '') }}"
+                        id="">
                     <div class="input-address-detail">
-                        <input placeholder="Địa chỉ chi tiết" type="text" name="" id="" required>
+                        <input placeholder="Địa chỉ chi tiết" type="text" name="address_detail" id="" required>
                     </div>
 
                     <div class="input-address-box">
-                        <select class="" id="city" aria-label=".form-select-sm" required>
+                        <select class="" id="city" name="city" aria-label=".form-select-sm" required>
                             <option value="" selected>Tỉnh/Thành phố</option>
                         </select>
 
-                        <select class="from-select-ml-20" id="district" aria-label=".form-select-sm" required>
+                        <select class="from-select-ml-20" id="district" name="district" aria-label=".form-select-sm"
+                            required>
                             <option value="" selected>Quận/Huyện</option>
                         </select>
 
-                        <select class="from-select-ml-20" id="ward" aria-label=".form-select-sm" required>
+                        <select class="from-select-ml-20" id="ward" name="ward" aria-label=".form-select-sm"
+                            required>
                             <option value="" selected>Phường/Xã</option>
                         </select>
                     </div>
@@ -56,11 +60,10 @@
                     <div class="payment-method">
                         <section class="squaredOne">
                             <div class="checkbox-container">
-                                <input type="checkbox" value="" id="squaredOne_2" name="check" checked />
+                                <input type="checkbox" value="cod" id="squaredOne_2" name="payment_method" checked />
                                 <label for="squaredOne_2"></label>
                             </div>
                         </section>
-
                         <img src="{{ asset('images/icon_image/icon-cod.svg') }}" alt="">
                         <span class="span-pay">Thanh toán khi nhận hàng</span>
                     </div>
@@ -70,45 +73,35 @@
                         <b>Thông tin đơn hàng</b>
                     </div>
                     <div class="payment-info-order-content">
-                        <div class="payment-info-product">
-                            <div class="payment-info-product-left">
-                                <div class="payment-info-img">
-                                    <img src="{{ asset('images/product/dresses/dam-a-bau-canh-sen-01.jpg') }}"
-                                        alt="">
+                        @if ($showCart instanceof Illuminate\Http\RedirectResponse)
+                            <script>
+                                window.location = "{{ $showCart->getTargetUrl() }}";
+                            </script>
+                            <?php exit(); ?>
+                        @endif
+                        @foreach ($showCart['cartItems'] as $cartItem)
+                            <div class="payment-info-product">
+                                <div class="payment-info-product-left">
+                                    <div class="payment-info-img">
+                                        <img src="{{ asset($cartItem->thumbnail) }}" alt="">
+                                    </div>
+                                    <ul>
+                                        <li>{{ $cartItem->name }}</li>
+                                        <li>
+                                            <div class="info-size-color">{{ $cartItem->color }}, {{ $cartItem->size }}
+                                            </div>
+                                            <div class="info-quantity">x {{ $cartItem->quantity }}</div>
+                                        </li>
+                                    </ul>
                                 </div>
-                                <ul>
-                                    <li>Áo thun tay dài</li>
-                                    <li>
-                                        <div class="info-size-color">Đen, S</div>
-                                        <div class="info-quantity">x 02</div>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="payment-info-price">
-                                <div class="payment-info-price-old">275.000 đ</div>
-                                <div class="payment-info-price-new">199.000 đ</div>
-                            </div>
-                        </div>
-
-                        <div class="payment-info-product">
-                            <div class="payment-info-product-left">
-                                <div class="payment-info-img">
-                                    <img src="{{ asset('images/product/dresses/dam-a-bau-canh-sen-01.jpg') }}"
-                                        alt="">
+                                <div class="payment-info-price">
+                                    <div class="payment-info-price-old">{{ number_format($cartItem->old_price, 3) }} đ
+                                    </div>
+                                    <div class="payment-info-price-new">{{ number_format($cartItem->new_price, 3) }} đ
+                                    </div>
                                 </div>
-                                <ul>
-                                    <li>Áo thun tay dài</li>
-                                    <li>
-                                        <div class="info-size-color">Đen, S</div>
-                                        <div class="info-quantity">x 02</div>
-                                    </li>
-                                </ul>
                             </div>
-                            <div class="payment-info-price">
-                                <div class="payment-info-price-old">275.000 đ</div>
-                                <div class="payment-info-price-new">199.000 đ</div>
-                            </div>
-                        </div>
+                        @endforeach
 
                         <div class="payment-expense">
                             <ul class="payment-expense-title">
@@ -118,10 +111,11 @@
                                 <li>Tổng thanh toán</li>
                             </ul>
                             <ul class="payment-expense-content">
-                                <li>2.852.500 đ</li>
+                                <li> {{ str_replace(',', '.', number_format($showCart['totalPayment'], 3)) }}đ
+                                </li>
                                 <li>0 đ</li>
                                 <li>0 đ</li>
-                                <li>2.852.500 đ</li>
+                                <li> {{ str_replace(',', '.', number_format($showCart['totalPayment'], 3)) }} đ</li>
                             </ul>
                         </div>
 

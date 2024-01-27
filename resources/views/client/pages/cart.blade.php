@@ -29,164 +29,75 @@
                         Tổng cộng
                     </div>
                 </div>
+
                 <div class="cart-product-list-content">
-                    <div class="cart-product-list-item">
-                        <div class="product-list-heading-chk">
-                            <section class="squaredOne">
-                                <div class="checkbox-container">
-                                    <input type="checkbox" value="" id="squaredOne_2" name="check" checked />
-                                    <label for="squaredOne_2"></label>
+
+                    @if ($showCart instanceof Illuminate\Http\RedirectResponse)
+                        <script>
+                            window.location = "{{ $showCart->getTargetUrl() }}";
+                        </script>
+                        <?php exit(); ?>
+                    @endif
+
+                    @if (isset($showCart['cartItems']) && count($showCart['cartItems']) > 0)
+                        @foreach ($showCart['cartItems'] as $cartItem)
+                            <div class="cart-product-list-item">
+                                <div class="product-list-heading-chk">
+                                    <section class="squaredOne">
+                                        <div class="checkbox-container">
+                                            <input type="checkbox" value="" id="squaredOne_2" name="check"
+                                                checked />
+                                            <label for="squaredOne_2"></label>
+                                        </div>
+                                    </section>
                                 </div>
-                            </section>
-                        </div>
 
-                        <div class="product-list-describe">
-                            <a href="">
-                                <div class="product-list-img">
-                                    <img src="{{ asset('images/product/dresses/dam-a-bau-canh-sen-02.jpg') }}"
-                                        alt="">
+                                <div class="product-list-describe">
+                                    <a href="{{ route('cart.delete', ['cartItemId' => $cartItem->id]) }}">
+                                        <div class="product-list-img">
+                                            <img src="{{ asset($cartItem->thumbnail) }}" alt="{{ $cartItem->name }}">
+                                        </div>
+                                        <ul>
+                                            <li class="list-describe-color-1">{{ $cartItem->name }}</li>
+                                            <li class="list-describe list-describe-color-1">{{ $cartItem->product_id }}</li>
+                                            <li class="list-describe list-describe-color-2 des-mt">{{ $cartItem->color }},
+                                                {{ $cartItem->size }}</li>
+                                            <li class="list-describe list-describe-color-2"><u>Xóa</u></li>
+                                        </ul>
+                                    </a>
                                 </div>
-                                <ul>
-                                    <li class="list-describe-color-1">Áo thun lai cuốn biên</li>
-                                    <li class="list-describe list-describe-color-1">ATE01066</li>
-                                    <li class="list-describe list-describe-color-2 des-mt">Trắng, S</li>
-                                    <li class="list-describe list-describe-color-2"><u>Xóa</u></li>
-                                </ul>
-                            </a>
-                        </div>
 
-                        <div class="product-list-unit-price">
-                            <div class="price-new">
-                                249.000 đ
-                            </div>
-                            <div class="price-old">
-                                265.000 đ
-                            </div>
-                        </div>
-
-                        <div class="product-list-quantity">
-                            <div class="detail-quantity">
-                                <span class="left" onclick="changeQuantity(-1)">
-                                    &minus;
-                                </span>
-                                <div class="detail-quantity-item" id="quantity">01</div>
-                                <span class="detail-quantity-item right" onclick="changeQuantity(1)">
-                                    &plus;
-                                </span>
-                            </div>
-                        </div>
-
-                        <div class="product-list-total">
-                            249.000 đ
-                        </div>
-
-                    </div>
-
-                    <div class="cart-product-list-item">
-                        <div class="product-list-heading-chk">
-                            <section class="squaredOne">
-                                <div class="checkbox-container">
-                                    <input type="checkbox" value="" id="squaredOne_2" name="check" checked />
-                                    <label for="squaredOne_2"></label>
+                                <div class="product-list-unit-price">
+                                    <div class="price-new">
+                                        {{ number_format($cartItem->new_price, 3) }} đ
+                                    </div>
+                                    <div class="price-old">
+                                        {{ number_format($cartItem->old_price, 3) }} đ
+                                    </div>
                                 </div>
-                            </section>
-                        </div>
 
-                        <div class="product-list-describe">
-                            <a href="">
-                                <div class="product-list-img">
-                                    <img src="{{ asset('images/product/dresses/dam-a-bau-canh-sen-02.jpg') }}"
-                                        alt="">
+                                <div class="product-list-quantity">
+                                    <div class="detail-quantity">
+                                        <span class="left" onclick="changeQuantity(-1)">
+                                            &minus;
+                                        </span>
+                                        <div class="detail-quantity-item" id="quantity">{{ $cartItem->quantity }}</div>
+                                        <span class="detail-quantity-item right" onclick="changeQuantity(1)">
+                                            &plus;
+                                        </span>
+                                    </div>
                                 </div>
-                                <ul>
-                                    <li class="list-describe-color-1">Áo thun lai cuốn biên</li>
-                                    <li class="list-describe list-describe-color-1">ATE01066</li>
-                                    <li class="list-describe list-describe-color-2 des-mt">Trắng, S</li>
-                                    <li class="list-describe list-describe-color-2"><u>Xóa</u></li>
-                                </ul>
-                            </a>
-                        </div>
 
-                        <div class="product-list-unit-price">
-                            <div class="price-new">
-                                249.000 đ
-                            </div>
-                            <div class="price-old">
-                                265.000 đ
-                            </div>
-                        </div>
-
-                        <div class="product-list-quantity">
-                            <div class="detail-quantity">
-                                <span class="left" onclick="changeQuantity(-1)">
-                                    &minus;
-                                </span>
-                                <div class="detail-quantity-item" id="quantity">01</div>
-                                <span class="detail-quantity-item right" onclick="changeQuantity(1)">
-                                    &plus;
-                                </span>
-                            </div>
-                        </div>
-
-                        <div class="product-list-total">
-                            249.000 đ
-                        </div>
-                    </div>
-
-                    <div class="cart-product-list-item">
-                        <div class="product-list-heading-chk">
-                            <section class="squaredOne">
-                                <div class="checkbox-container">
-                                    <input type="checkbox" value="" id="squaredOne_2" name="check" checked />
-                                    <label for="squaredOne_2"></label>
+                                <div class="product-list-total">
+                                    {{ number_format($cartItem->quantity * $cartItem->new_price, 3) }} đ
                                 </div>
-                            </section>
-                        </div>
-
-                        <div class="product-list-describe">
-                            <a href="">
-                                <div class="product-list-img">
-                                    <img src="{{ asset('images/product/dresses/dam-a-bau-canh-sen-02.jpg') }}"
-                                        alt="">
-                                </div>
-                                <ul>
-                                    <li class="list-describe-color-1">Áo thun lai cuốn biên</li>
-                                    <li class="list-describe list-describe-color-1">ATE01066</li>
-                                    <li class="list-describe list-describe-color-2 des-mt">Trắng, S</li>
-                                    <li class="list-describe list-describe-color-2"><u>Xóa</u></li>
-                                </ul>
-                            </a>
-                        </div>
-
-                        <div class="product-list-unit-price">
-                            <div class="price-new">
-                                249.000 đ
                             </div>
-                            <div class="price-old">
-                                265.000 đ
-                            </div>
-                        </div>
-
-                        <div class="product-list-quantity">
-                            <div class="detail-quantity">
-                                <span class="left" onclick="changeQuantity(-1)">
-                                    &minus;
-                                </span>
-                                <div class="detail-quantity-item" id="quantity">01</div>
-                                <span class="detail-quantity-item right" onclick="changeQuantity(1)">
-                                    &plus;
-                                </span>
-                            </div>
-                        </div>
-
-                        <div class="product-list-total">
-                            249.000 đ
-                        </div>
-                    </div>
+                        @endforeach
+                    @endif
                 </div>
             </div>
             <div class="cart-order-container">
-                <form action="">
+                <form action="{{ route('payment') }}">
                     <div class="cart-order-title">
                         <b>Thông tin đơn hàng</b>
                     </div>
@@ -197,7 +108,7 @@
                                     Tổng tiền sản phẩm
                                 </div>
                                 <div class="cart-order-info-price">
-                                    586.500 đ
+                                    {{ str_replace(',', '.', number_format($showCart['totalPayment'], 3)) }} đ
                                 </div>
                             </li>
                             <li class="cart-order-content-flex">
@@ -213,13 +124,15 @@
                                 <div class="btn-sale">ÁP DỤNG</div>
                             </li>
                             <li class="error">
-                                Vui lòng nhập mã giảm giá!
+                                Vui lòng nhập mã giảm giá nếu có!
                             </li>
                             <li class="cart-order-content-separation"></li>
                             <li class="cart-order-content-flex">
                                 <div class="cart-total-payment">Tổng thanh toán</div>
                                 <div class="cart-total-price">
-                                    <div class="cart-total-color">586.500 </div> <span>đ</span>
+                                    <div class="cart-total-color">
+                                        {{ str_replace(',', '.', number_format($showCart['totalPayment'], 3)) }}
+                                    </div> <span>đ</span>
                                 </div>
                             </li>
                             <li class="order-btn-submit">
