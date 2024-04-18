@@ -20,7 +20,6 @@ class ActiveAccountController extends Controller
                 return dd('Tài khoản kích hoạt thất bại');
             }
         }
-        // Đoạn mã xử lý nếu không tìm thấy người dùng
         return dd('emails.activation_error');
     }
 }

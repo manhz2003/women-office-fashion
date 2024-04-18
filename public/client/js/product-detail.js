@@ -89,22 +89,16 @@ function changeQuantity(amount) {
     document.getElementById("selectedQuantity").value = selectedQuantity;
 }
 
-// slide ảnh
-let slideIndex = 1;
-showSlides(slideIndex);
-
-function plusSlides(n) {
-    showSlides((slideIndex += n));
-}
-
-function currentSlide(n) {
-    showSlides((slideIndex = n));
-}
-
-function showSlides(n) {
+function showSlides(n, document) {
     let i;
-    let slides = document.getElementsByClassName("mySlides");
-    let dots = document.getElementsByClassName("demo");
+    let doc =
+        document ||
+        (typeof window !== "undefined" ? window.document : undefined);
+    if (!doc) {
+        throw new Error("No document available");
+    }
+    let slides = doc.getElementsByClassName("mySlides");
+    let dots = doc.getElementsByClassName("demo");
     if (n > slides.length) {
         slideIndex = 1;
     }
@@ -119,4 +113,13 @@ function showSlides(n) {
     }
     slides[slideIndex - 1].style.display = "block";
     dots[slideIndex - 1].className += " active";
+}
+
+let slideIndex = 1;
+if (typeof document !== "undefined") {
+    showSlides(slideIndex);
+}
+
+function currentSlide(n) {
+    showSlides((slideIndex = n));
 }

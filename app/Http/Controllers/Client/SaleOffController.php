@@ -5,13 +5,14 @@ namespace App\Http\Controllers\Client;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use InvalidArgumentException;
 
 class SaleOffController extends Controller
 {
     public function viewSaleOff()
     {
         $saleOffs = $this->productSaleOffCode();
-        $products = $this->productRandomsaleOff();
+        $products = $this->productRandomsaleOff(10);
         return view('client.pages.sale-off', compact('saleOffs', 'products'));
     }
 
@@ -23,13 +24,17 @@ class SaleOffController extends Controller
     }
 
     // trả 10 product random cho trang sale-off
-    public function productRandomsaleOff()
+    public function productRandomsaleOff($limit)
     {
+        if (!is_int($limit) || is_null($limit) || $limit === '') {
+            throw new InvalidArgumentException("Limit must be a non-empty integer");
+        }
+
         $products = DB::table('products')
             ->inRandomOrder()
             ->distinct()
             ->select('id', 'name', 'old_price', 'new_price', 'thumbnail')
-            ->limit(10)
+            ->limit($limit)
             ->get();
         return $products;
     }

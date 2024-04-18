@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Client;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use InvalidArgumentException;
 
 class ProductSaleController extends Controller
 {
@@ -26,23 +27,32 @@ class ProductSaleController extends Controller
     }
 
     // sắp xếp 15 sản phẩm ngẫu nhiên
-    private function getSortedProductRandom($sort, $take)
+    public function getSortedProductSale($sort)
     {
-        $orderBy = ($sort === 'asc') ? 'new_price' : 'new_price desc';
+        if ($sort !== 'asc' && $sort !== "desc") {
+            throw new InvalidArgumentException("Invalid sort parameter must be asc or desc");
+        }
 
-        $products = DB::table('products')
+        if ($sort === 'asc') {
+            $orderBy = 'new_price';
+        } else {
+            $orderBy = 'new_price desc';
+        }
+
+        $sortedProducts = DB::table('products')
+            ->join('categories', 'products.categorie_id', '=', 'categories.id')
+            ->where('categories.name', 'váy đầm')
             ->orderByRaw($orderBy)
-            ->inRandomOrder()
-            ->take($take)
+            ->take(15)
             ->get(['products.id', 'products.name', 'products.old_price', 'products.new_price', 'products.thumbnail']);
 
-        return $products;
+        return $sortedProducts;
     }
 
     // lấy 15 sản phẩm ngẫu nhiên đã sắp xếp cho trang sản phẩm giảm giá
     public function sortProductSale(Request $request, $sort = 'desc')
     {
-        $products = $this->getSortedProductRandom($sort, 15);
+        $products = $this->getSortedProductSale($sort);
 
         return view('client.pages.product-sale', compact('products', 'sort'));
     }

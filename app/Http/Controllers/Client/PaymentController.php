@@ -29,7 +29,6 @@ class PaymentController extends Controller
                 $id = strtoupper($this->generateRandomId());
             } while (DB::table('payments')->where('id', $id)->exists());
 
-            // Lưu thông tin vào bảng payments
             DB::table('payments')->insert([
                 'id' => $id,
                 'user_address' => $request->input('address_detail'),
@@ -47,6 +46,7 @@ class PaymentController extends Controller
     {
         return strtoupper(Str::random(9));
     }
+
     public function showOrderPay()
     {
         $cookieValue = request()->cookie('user_info');

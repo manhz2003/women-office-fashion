@@ -6,6 +6,7 @@ var Parameter = {
     method: "GET",
     responseType: "application/json",
 };
+
 var promise = axios(Parameter);
 promise.then(function (result) {
     renderCity(result.data);
@@ -29,6 +30,7 @@ function renderCity(data) {
             }
         }
     };
+
     district.onchange = function () {
         ward.length = 1;
         const dataCity = data.filter((n) => n.Id === citis.value);

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Client;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use InvalidArgumentException;
 
 class CartController extends Controller
 {
@@ -17,12 +18,18 @@ class CartController extends Controller
 
     public function getProductRandom($limit)
     {
+        if (!is_int($limit) || $limit <= 0) {
+            throw new InvalidArgumentException("Limit must be a positive integer.");
+        }
+
         $products = DB::table('products')
             ->inRandomOrder()
             ->distinct()
             ->select('id', 'name', 'old_price', 'new_price', 'thumbnail')
             ->limit($limit)
-            ->get();
+            ->get()
+            ->toArray();
+
         return $products;
     }
 
@@ -66,7 +73,18 @@ class CartController extends Controller
 
     public function deleteCartItem($cartItemId)
     {
+        if (!is_string($cartItemId) || empty($cartItemId)) {
+            throw new InvalidArgumentException("CartItem id must be a non-empty string.");
+        }
+
+        $exists = DB::table('cart_items')->where('id', $cartItemId)->exists();
+
+        if (!$exists) {
+            throw new InvalidArgumentException("CartItem with id {$cartItemId} does not exist.");
+        }
+
         DB::table('cart_items')->where('id', $cartItemId)->delete();
+
         return redirect()->route('cart')->with('success', 'Sản phẩm đã được xóa khỏi giỏ hàng.');
     }
 

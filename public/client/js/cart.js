@@ -1,12 +1,15 @@
-function changeQuantity(amount) {
-    var quantityElement = document.getElementById("quantity");
-    var currentQuantity = parseInt(quantityElement.innerText, 10);
+// cart.js
+function changeQuantity(amount, currentQuantity) {
+    if (typeof amount !== "number") {
+        return currentQuantity;
+    }
     var newQuantity = currentQuantity + amount;
     if (newQuantity < 1) {
         newQuantity = 1;
     } else if (newQuantity > 200) {
         newQuantity = 200;
     }
-
-    quantityElement.innerText = newQuantity.toString().padStart(2, "0");
+    return newQuantity;
 }
+
+module.exports = changeQuantity;
