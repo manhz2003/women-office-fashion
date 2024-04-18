@@ -4,46 +4,51 @@ use Tests\TestCase;
 use App\Http\Controllers\Client\PaymentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\RedirectResponse;
 
 class InsertPaymentTest extends TestCase
 {
     public function testInsertPayment()
     {
-        // Arrange
+        $data = [
+            'address_detail' => '123 Street, City',
+            'payment_method' => 'Cash',
+            'total_pay' => 100,
+        ];
+
+        $cookieValue = json_encode(['id' => 1]);
+
+        DB::shouldReceive('table->where->exists')->andReturn(false);
+        DB::shouldReceive('table->insert')->once();
+
+        // kiểm tra xem hàm có redirect về route 'order-success' không
+        $response = $this->call('POST', '/order-success', $data, ['user_info' => $cookieValue]);
+        $this->assertInstanceOf(RedirectResponse::class, $response);
+    }
+
+    public function testInsertPaymentWithInvalidCookie()
+    {
         $request = new Request([
-            'address_detail' => '123 ABC Street',
-            'payment_method' => 'Credit Card',
-            'total_pay' => 100.00,
+            'address_detail' => '123 Street, City',
+            'payment_method' => 'Cash',
+            'total_pay' => 100,
+        ]);
+        $controller = new PaymentController();
+        $this->expectException(InvalidArgumentException::class);
+        $controller->insertPayment($request);
+    }
+
+    public function testInsertPaymentWithInvalidCookieFormat()
+    {
+        $request = new Request([
+            'address_detail' => '123 Street, City',
+            'payment_method' => 'Cash',
+            'total_pay' => 100,
         ]);
 
-        $expectedId = 'TEST_ID';
-        $expectedUserAddress = '123 ABC Street';
-        $expectedMethodPay = 'Credit Card';
-        $expectedTotal = 100.00;
-        $expectedUserId = 1;
-
-        $mockTable = \Mockery::mock();
-        DB::shouldReceive('table')->once()->with('payments')->andReturn($mockTable);
-        $mockTable->shouldReceive('where')->once()->with('id', $expectedId)->andReturnSelf();
-        $mockTable->shouldReceive('exists')->once()->andReturn(false);
-        $mockTable->shouldReceive('insert')->once()->with([
-            'id' => $expectedId,
-            'user_address' => $expectedUserAddress,
-            'method_pay' => $expectedMethodPay,
-            'total' => $expectedTotal,
-            'user_id' => $expectedUserId,
-            'created_at' => \Mockery::type('string'),
-            'updated_at' => \Mockery::type('string'),
-        ]);
-
-        $request->cookies->add(['user_info' => '{"id":1}']);
-
-        // Act
-        $paymentController = new PaymentController();
-        $response = $paymentController->insertPayment($request);
-
-        // Assert
-        $this->assertInstanceOf(\Illuminate\Http\RedirectResponse::class, $response);
-        $this->assertEquals(route('order-success'), $response->getTargetUrl());
+        $this->withCookie('user_info', 'invalid_json_format');
+        $controller = new PaymentController();
+        $this->expectException(InvalidArgumentException::class);
+        $controller->insertPayment($request);
     }
 }

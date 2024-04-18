@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+use InvalidArgumentException;
 
 class PaymentController extends Controller
 {
@@ -17,28 +18,32 @@ class PaymentController extends Controller
 
     public function insertPayment(Request $request)
     {
-
         $cookieValue = request()->cookie('user_info');
-        if ($cookieValue) {
-            $userInfo = json_decode($cookieValue, true);
-            $user_id = $userInfo['id'];
-
-            $id = $this->generateRandomId();
-
-            do {
-                $id = strtoupper($this->generateRandomId());
-            } while (DB::table('payments')->where('id', $id)->exists());
-
-            DB::table('payments')->insert([
-                'id' => $id,
-                'user_address' => $request->input('address_detail'),
-                'method_pay' => $request->input('payment_method'),
-                'total' => $request->input('total_pay'),
-                'user_id' => $user_id,
-                'created_at' => now(),
-                'updated_at' => now(),
-            ]);
+        if (!$cookieValue) {
+            throw new InvalidArgumentException("Invalid cookie");
         }
+
+        $userInfo = json_decode($cookieValue, true);
+        if (!is_array($userInfo) || empty($userInfo) || !isset($userInfo['id'])) {
+            throw new InvalidArgumentException("Invalid cookie format");
+        }
+
+        $user_id = $userInfo['id'];
+
+        do {
+            $id = strtoupper($this->generateRandomId());
+        } while (DB::table('payments')->where('id', $id)->exists());
+
+        DB::table('payments')->insert([
+            'id' => $id,
+            'user_address' => $request->input('address_detail'),
+            'method_pay' => $request->input('payment_method'),
+            'total' => $request->input('total_pay'),
+            'user_id' => $user_id,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
         return redirect()->route('order-success');
     }
 

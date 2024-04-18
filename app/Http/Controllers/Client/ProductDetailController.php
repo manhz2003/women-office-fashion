@@ -38,8 +38,8 @@ class ProductDetailController extends Controller
     // lấy tất cả ảnh
     public function getProductImages($id)
     {
-        if (is_null($id) || empty($id)) {
-            throw new InvalidArgumentException("id rỗng hoặc null");
+        if (!is_string($id) || is_null($id) || $id === '') {
+            throw new InvalidArgumentException("id must be a non-empty string");
         }
 
         $images = DB::table('images')->where('product_id', $id)->get();
